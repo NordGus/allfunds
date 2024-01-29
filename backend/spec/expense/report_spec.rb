@@ -37,8 +37,8 @@ RSpec.describe Expense::Report do
     ]
   }
 
-  describe "self.new_with_items" do
-    subject(:report) { Expense::Report.new_with_items(rules: rules, items: items_1) }
+  describe "self.new_with_rules_and_items" do
+    subject(:report) { Expense::Report.new_with_rules_and_items(rules: rules, items: items_1) }
 
     it "should return an Expense::Report instance" do
       expect(report).to be_instance_of(Expense::Report)
@@ -86,7 +86,7 @@ RSpec.describe Expense::Report do
   end
 
   describe "#calculate_refund" do
-    subject(:report_1) { Expense::Report.new_with_items(rules: rules, items: items_1) }
-    subject(:report_2) { Expense::Report.new_with_items(rules: rules, items: items_2) }
+    subject(:report_1) { Expense::Report.new_with_rules_and_items(rules: rules, items: items_1) }
+    subject(:report_2) { Expense::Report.new_with_rules_and_items(rules: rules, items: items_2) }
   end
 end

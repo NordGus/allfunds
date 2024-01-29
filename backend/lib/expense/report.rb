@@ -11,7 +11,7 @@ module Expense
     attribute :items
     attribute :total, default: 0
 
-    def self.new_with_items(rules: [], items: [])
+    def self.new_with_rules_and_items(rules: [], items: [])
       new(
         rules: rules.collect{ |rule| Refund::Rule.new_from(rule: rule[:rule], args: rule[:args]) },
         items: items.collect{ |params| Item.new(params) }
