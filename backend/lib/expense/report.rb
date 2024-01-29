@@ -19,7 +19,7 @@ module Expense
     end
 
     def calculate_refund
-      self.total = self.rules.inject(BigDecimal(0, 2)) { |sum, rule| sum + rule.apply(self.items) }
+      self.total = self.rules.inject(BigDecimal(0, 2)) { |sum, rule| sum + rule.apply(items: self.items) }
     end
   end
 end
