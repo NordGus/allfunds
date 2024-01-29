@@ -29,5 +29,11 @@ RSpec.describe Refund::Rules do
         { first_rate: 1, threshold: 20, second_rate: 0.5 }
       ]
     end
+
+    context "a not implemented rule" do
+      it "must raise NotImplementedError" do
+        expect { Refund::Rules.new_for(rule: "not_implemented", args: {}) }.to raise_error(NotImplementedError)
+      end
+    end
   end
 end
