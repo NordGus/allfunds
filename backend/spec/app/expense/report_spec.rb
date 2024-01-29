@@ -60,12 +60,20 @@ RSpec.describe Expense::Report do
   end
 
   describe "#calculate_refund" do
-    subject(:report_1) { Expense::Report.new_with_items(items: items_1) }
-    subject(:report_2) { Expense::Report.new_with_items(items: items_2) }
+    context "report #1" do
+      subject(:report) { Expense::Report.new_with_items(items: items_1) }
 
-    it "should return the expected amount to refund" do
-      expect(report_1.calculate_refund(rules)).to eq(76.30)
-      expect(report_2.calculate_refund(rules)).to eq(92.50)
+      it "should return the expected amount to refund" do
+        expect(report.calculate_refund(rules)).to eq(76.30)
+      end
+    end
+
+    context "report #2" do
+      subject(:report) { Expense::Report.new_with_items(items: items_2) }
+
+      it "should return the expected amount to refund" do
+        expect(report.calculate_refund(rules)).to eq(92.50)
+      end
     end
   end
 end
