@@ -84,4 +84,9 @@ RSpec.describe Expense::Report do
       end
     end
   end
+
+  describe "#calculate_refund" do
+    subject(:report_1) { Expense::Report.new_with_items(rules: rules, items: items_1) }
+    subject(:report_2) { Expense::Report.new_with_items(rules: rules, items: items_2) }
+  end
 end
