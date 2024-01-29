@@ -18,7 +18,7 @@ module Expense
       )
     end
 
-    def calculate_total
+    def calculate_refund
       self.total = self.rules.inject(BigDecimal(0, 2)) { |sum, rule| sum + rule.apply(self.items) }
     end
   end
