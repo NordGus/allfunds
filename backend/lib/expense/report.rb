@@ -12,16 +12,10 @@ module Expense
     attribute :total, default: 0
 
     def self.new_with_items(rules: [], items: [])
-      report = new(
+      new(
         rules: rules.collect{ |rule| Refund::Rule.new_from(rule: rule[:rule], args: rule[:args]) },
         items: items.collect{ |params| Item.new(params) }
       )
-
-      report.valid?
-      report.rules.each { |rule| rule.valid? }
-      report.items.each { |item| item.valid? }
-
-      report
     end
 
     def calculate_total
