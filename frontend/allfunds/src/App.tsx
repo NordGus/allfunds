@@ -47,7 +47,7 @@ function App() {
                     className="cursor-pointer py-1 px-2 bg-neutral-300 hover:bg-neutral-500"
                     onClick={() => setHideCart(false)}
                 >
-                    { cart.length === 0 ? "Cart" : `Cart (${cart.length} items)` }
+                    { cart.length === 0 ? "Cart" : `Cart (${cart.reduce((sum, item) => sum + item.amount, 0)} items)` }
                 </a>
             </div>
         </div>

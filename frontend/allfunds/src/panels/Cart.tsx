@@ -53,7 +53,7 @@ function Cart({ items, dispatch, hide, onHide }: Props) {
                     </>
             }
 
-            <div className="lg:hidden w-full flex justify-center items-center">
+            <div className="lg:hidden w-full flex justify-between items-center">
                 <a className="cursor-pointer" onClick={() => onHide(true)}>
                     <svg
                         className="rotate-90 transform text-neutral-700 transition-all duration-300"
@@ -61,24 +61,24 @@ function Cart({ items, dispatch, hide, onHide }: Props) {
                         height="24"
                         width="24"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         viewBox="0 0 24 24"
                     >
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </a>
-                <h3 className="flex-1 text-2xl text-center">Cart</h3>
+                <h3 className="text-2xl text-center">Cart</h3>
                 <svg
                     className="text-transparent"
                     fill="none"
                     height="24"
                     width="24"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
                 >
                     <polyline points="6 9 12 15 18 9"></polyline>
