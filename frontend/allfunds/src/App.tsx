@@ -28,7 +28,7 @@ function App() {
     }, []);
 
     return (
-        <div className="flex gap-2">
+        <div className="flex">
             <div className="flex-1 flex flex-wrap px-6 py-10 gap-6 justify-between h-[100vh] overflow-y-scroll">
                 {
                     products.length === 0 ? <span>Loading</span> : products.map(
@@ -52,7 +52,7 @@ function App() {
                         >
                             CHECKOUT {cart.reduce((subtotal: number, item) => subtotal + (item.product.price * item.amount), 0)}€
                         </a>
-                        <div className="flex-1 flex flex-col gap-4 overflow-y-scroll">
+                        <div className="flex-1 w-full flex flex-col gap-4 overflow-y-scroll">
                             {
                                 cart.map(item => <Listing
                                         key={`cart:${item.product.id}`}

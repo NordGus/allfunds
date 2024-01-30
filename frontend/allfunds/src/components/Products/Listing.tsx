@@ -9,11 +9,11 @@ type Props = {
 
 export function Listing({ name, price, imageUrl, amount, onRemove, onAdd }: Props) {
     return (
-        <div className="grid grid-cols-3 grid-rows-1 gap-2">
-            <div className="h-[5vw] flex justify-center items-center overflow-clip">
+        <div className="w-full grid grid-cols-item grid-rows-1 gap-2">
+            <div className="h-[5vw] w-[5vw] flex justify-center items-center overflow-clip">
                 <img className="h-full" src={ imageUrl } alt={ name }/>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col justify-between gap-2">
                 <h4>{name}</h4>
                 <div className="flex justify-center items-center gap-4">
                     <a

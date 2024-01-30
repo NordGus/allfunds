@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
         gridTemplateColumns: {
-            "product-preview": "1fr min-content"
+            "product-preview": "1fr min-content",
+            "item": "min-content 1fr min-content"
         },
         gridTemplateRows: {
             "product-preview": "8vw min-content 1fr min-content"
