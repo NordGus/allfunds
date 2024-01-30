@@ -13,12 +13,12 @@ export function Preview({ name, price, description, imageUrl, stock, onAdd }: Pr
             <div className="col-span-2 flex justify-center items-center overflow-clip">
                 <img className="w-full" src={imageUrl} alt={name}/>
             </div>
-            <div className="col-span-2 flex justify-between items-center">
+            <div className="col-span-2 px-2 flex justify-between items-center">
                 <h4 className="text-lg">{name}</h4><p className="text-xl">{price}</p>
             </div>
-            <p className="col-span-2">{description}</p>
+            <p className="col-span-2 px-2">{description}</p>
             <div className="col-span-2 flex justify-between items-center">
-                <span className="text-md p-1 ">{ stock } left</span>
+                <span className="text-md py-1 px-2">{ stock } left</span>
                 <a
                     className="cursor-pointer text-md py-1 px-2 bg-neutral-300 hover:bg-neutral-400"
                     onClick={onAdd}
