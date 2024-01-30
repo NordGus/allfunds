@@ -9,7 +9,7 @@ type Props = {
 
 export function Preview({ name, price, description, imageUrl, stock, onAdd }: Props) {
     return (
-        <div className="grid grid-cols-product-preview grid-rows-product-preview gap-2 w-[15vw] overflow-clip border-[1px] border-neutral-700">
+        <div className="grid grid-cols-product-preview grid-rows-product-preview gap-2 lg:min-w-[15vw] min-w-[40vw] flex-1 overflow-clip border-[1px] border-neutral-700">
             <div className="col-span-2 flex justify-center items-center overflow-clip">
                 <img className="w-full" src={imageUrl} alt={name}/>
             </div>

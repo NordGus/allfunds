@@ -15,7 +15,7 @@ function Products({ products, cartDispatch }: PropsWithChildren<Props>) {
     )
 
     return (
-        <div className="flex-1 flex flex-wrap px-6 py-10 gap-6 justify-between h-[100vh] overflow-y-scroll">
+        <div className="flex-1 flex flex-wrap lg:px-6 px-2 py-10 gap-4 lg:gap-6 justify-between h-[100vh] overflow-y-scroll">
             {
                 products.map(
                     product => <Preview
