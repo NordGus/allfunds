@@ -29,32 +29,26 @@ function App() {
 
     return (
         <div className="flex gap-2">
-            <div className="flex-1 flex flex-wrap px-6 py-10 justify-between h-[100vh] overflow-y-scroll">
+            <div className="flex-1 flex flex-wrap px-6 py-10 gap-6 justify-between h-[100vh] overflow-y-scroll">
                 {
                     products.length === 0 ? <span>Loading</span> : products.map(
                         product => <Preview
                             key={product.id}
                             name={product.name}
                             price={`${product.price}€`}
+                            stock={product.stock}
                             description={product.description}
                             imageUrl={product.imageUrl}
-                        >
-                            <span>{ product.stock } left</span>
-                            <a
-                                className="cursor-pointer"
-                                onClick={() => cartDispatch({type: "add", product: product, amount: 1})}
-                            >
-                                + add
-                            </a>
-                        </Preview>
+                            onAdd={() => cartDispatch({type: "add", product: product, amount: 1})}
+                        />
                     )
                 }
             </div>
-            <div className="w-[25vw] p-3 flex flex-col justify-center items-center gap-4">
+            <div className="w-[25vw] p-3 flex flex-col justify-center items-center gap-4 border-l-[1px] border-neutral-700">
                 { cart.length === 0 ?
                     <span>Your cart is empty</span> : <>
                         <a
-                            className="text-xl py-2 px-2 bg-neutral-300 hover:bg-neutral-500"
+                            className="text-xl py-2 px-2 bg-neutral-300 hover:bg-neutral-400"
                         >
                             CHECKOUT {cart.reduce((subtotal: number, item) => subtotal + (item.product.price * item.amount), 0)}€
                         </a>

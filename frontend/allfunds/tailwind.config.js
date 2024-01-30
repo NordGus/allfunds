@@ -5,7 +5,14 @@ export default {
       "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+        gridTemplateColumns: {
+            "product-preview": "1fr min-content"
+        },
+        gridTemplateRows: {
+            "product-preview": "8vw min-content 1fr min-content"
+        }
+    },
   },
   plugins: [],
 }
