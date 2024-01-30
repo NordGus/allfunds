@@ -16,7 +16,7 @@ function Products({ products, cartDispatch, hide }: PropsWithChildren<Props>) {
     )
 
     return (
-        <div className={hide ? "hidden" : "flex-1 flex flex-wrap lg:px-6 px-2 py-10 gap-4 lg:gap-6 justify-between h-[100vh] overflow-y-scroll"}>
+        <div className={hide ? "hidden" : "flex-1 flex flex-wrap lg:px-6 px-2 py-[4rem] gap-4 lg:gap-6 justify-between h-[100vh] overflow-y-scroll"}>
             {
                 products.map(
                     product => <Preview

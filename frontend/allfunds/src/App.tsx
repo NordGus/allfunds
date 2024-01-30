@@ -7,42 +7,47 @@ function App() {
     const [cart, cartDispatch] = useReducer(cartReducer, initialCart)
     const [products, setProducts] = useState(new Array<Product>())
     const [hideCart, setHideCart] = useState(!inDesktop)
+    const [showFavorites, setShowFavorites] = useState(false)
 
     useEffect(() => {
-        fetch("http://localhost:3000/grocery",
-            { headers: { "Content-Type": "application/json" } }
-        ).then(response => {
-            if (response.ok) return response.json()
-        }).then((products: ProductResponse[]) => {
-            setProducts(products.map(product => {
-                return {
-                    id: product.id,
-                    imageUrl: product.image_url,
-                    stock: product.stock,
-                    name: product.productName,
-                    description: product.productDescription,
-                    price: product.price,
-                    favorite: product.favorite,
-                }
-            }))
-        })
-        .catch(err => console.error(err))
-    }, []);
+        const url: string = showFavorites ? "http://localhost:3000/grocery?favorite=1" : "http://localhost:3000/grocery"
+
+        fetch(url, { headers: { "Content-Type": "application/json" } })
+            .then(response => { if (response.ok) return response.json() })
+            .then((products: ProductResponse[]) => {
+                setProducts(products.map(product => {
+                    return {
+                        id: product.id,
+                        imageUrl: product.image_url,
+                        stock: product.stock,
+                        name: product.productName,
+                        description: product.productDescription,
+                        price: product.price,
+                        favorite: product.favorite,
+                    }
+                }))
+            })
+            .catch(err => console.error(err))
+    }, [showFavorites]);
 
     return (
         <div className="flex relative">
             <Products products={products} cartDispatch={cartDispatch} hide={inDesktop ? false : !hideCart}/>
             <Cart items={cart} dispatch={cartDispatch} hide={hideCart} onHide={setHideCart} />
-            <div className="flex justify-between gap-2 absolute bottom-0 right-0 left-0 p-2">
+            <div
+                className={!hideCart ? "hidden" : "flex justify-between gap-2 absolute bottom-0 right-0 left-0 p-2 text-xl"}
+            >
                 <a
+                    className="cursor-pointer py-1 px-2 bg-neutral-300 hover:bg-neutral-500"
+                    onClick={() => setShowFavorites(!showFavorites)}
                 >
-                    Favorites
+                    { showFavorites ? "Show All" : "Show Favorites" }
                 </a>
                 <a
-                    className="cursor-pointer text-xl py-1 px-2 bg-neutral-300 hover:bg-neutral-500"
+                    className="cursor-pointer py-1 px-2 bg-neutral-300 hover:bg-neutral-500"
                     onClick={() => setHideCart(false)}
                 >
-                    Cart
+                    { cart.length === 0 ? "Cart" : `Cart (${cart.length} items)` }
                 </a>
             </div>
         </div>

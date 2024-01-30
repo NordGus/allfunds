@@ -11,7 +11,7 @@ export default {
             "item": "min-content 1fr min-content"
         },
         gridTemplateRows: {
-            "product-preview": "8vw min-content 1fr min-content"
+            "product-preview": "10vh min-content 1fr min-content"
         }
     },
   },
