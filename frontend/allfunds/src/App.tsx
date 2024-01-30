@@ -3,8 +3,10 @@ import Products from "./panels/Products.tsx";
 import Cart from "./panels/Cart.tsx";
 
 function App() {
+    const inDesktop = window.innerWidth > 1024
     const [cart, cartDispatch] = useReducer(cartReducer, initialCart)
     const [products, setProducts] = useState(new Array<Product>())
+    const [hideCart, setHideCart] = useState(!inDesktop)
 
     useEffect(() => {
         fetch("http://localhost:3000/grocery",
@@ -28,9 +30,21 @@ function App() {
     }, []);
 
     return (
-        <div className="flex">
-            <Products products={products} cartDispatch={cartDispatch}/>
-            <Cart items={cart} dispatch={cartDispatch} />
+        <div className="flex relative">
+            <Products products={products} cartDispatch={cartDispatch} hide={inDesktop ? false : !hideCart}/>
+            <Cart items={cart} dispatch={cartDispatch} hide={hideCart} onHide={setHideCart} />
+            <div className="flex justify-between gap-2 absolute bottom-0 right-0 left-0 p-2">
+                <a
+                >
+                    Favorites
+                </a>
+                <a
+                    className="cursor-pointer text-xl py-1 px-2 bg-neutral-300 hover:bg-neutral-500"
+                    onClick={() => setHideCart(false)}
+                >
+                    Cart
+                </a>
+            </div>
         </div>
     )
 }

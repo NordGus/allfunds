@@ -5,9 +5,10 @@ import {CartAction, Product} from "../App.tsx";
 type Props = {
     products: Product[]
     cartDispatch: Dispatch<CartAction>
+    hide: boolean
 }
 
-function Products({ products, cartDispatch }: PropsWithChildren<Props>) {
+function Products({ products, cartDispatch, hide }: PropsWithChildren<Props>) {
     if (products.length === 0) return (
         <div className="h-[100vh] flex-1 flex justify-center items-center">
             <span>Loading Products</span>
@@ -15,7 +16,7 @@ function Products({ products, cartDispatch }: PropsWithChildren<Props>) {
     )
 
     return (
-        <div className="flex-1 flex flex-wrap lg:px-6 px-2 py-10 gap-4 lg:gap-6 justify-between h-[100vh] overflow-y-scroll">
+        <div className={hide ? "hidden" : "flex-1 flex flex-wrap lg:px-6 px-2 py-10 gap-4 lg:gap-6 justify-between h-[100vh] overflow-y-scroll"}>
             {
                 products.map(
                     product => <Preview
