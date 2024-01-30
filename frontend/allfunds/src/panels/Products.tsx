@@ -1,10 +1,10 @@
 import {Dispatch, PropsWithChildren} from "react";
 import {Preview} from "../components/Products/Preview.tsx";
-import {CartStateAction, Product} from "../App.tsx";
+import {CartAction, Product} from "../App.tsx";
 
 type Props = {
     products: Product[]
-    cartDispatch: Dispatch<CartStateAction>
+    cartDispatch: Dispatch<CartAction>
 }
 
 function Products({ products, cartDispatch }: PropsWithChildren<Props>) {
