@@ -16,7 +16,7 @@ export function Preview({ name, price, description, imageUrl, stock, onAdd }: Pr
             <div className="col-span-2 px-2 flex justify-between items-center">
                 <h4 className="text-lg">{name}</h4><p className="text-xl">{price}</p>
             </div>
-            <p className="col-span-2 px-2">{description.substring(0, 147)}...</p>
+            <p className="col-span-2 px-2">{description.substring(0, 107)}...</p>
             <div className="col-span-2 flex justify-between items-center">
                 <span className="text-md py-1 px-2">{ stock } left</span>
                 <a
