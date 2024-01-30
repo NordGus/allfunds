@@ -9,7 +9,7 @@ type Props = {
 
 export function Preview({ name, price, description, imageUrl, children }: PropsWithChildren<Props>) {
     return (
-        <div className="grid grid-cols-2 grid-rows-4 gap-2">
+        <div className="grid grid-cols-2 grid-rows-4 gap-2 w-[15vw]">
             <div className="col-span-2 flex justify-center items-center overflow-clip">
                 <img className="w-full" src={ imageUrl } alt={ name }/>
             </div>

@@ -1,25 +1,34 @@
-import {PropsWithChildren} from "react";
-
 type Props = {
     name: string,
-    price: string,
     imageUrl: string
+    price: number,
+    amount: number
+    onRemove: (() => void)
+    onAdd: (() => void)
 }
 
-export function Listing({ name, price, imageUrl, children }: PropsWithChildren<Props>) {
+export function Listing({ name, price, imageUrl, amount, onRemove, onAdd }: Props) {
     return (
         <div className="grid grid-cols-3 grid-rows-1 gap-2">
-            <div className="h-[5vh] flex justify-center items-center overflow-clip">
+            <div className="h-[5vw] flex justify-center items-center overflow-clip">
                 <img className="h-full" src={ imageUrl } alt={ name }/>
             </div>
             <div className="flex flex-col gap-2">
                 <h4>{name}</h4>
-                <div className="flex justify-between items-center">
-                    {children}
+                <div className="flex justify-center items-center gap-4">
+                    <a
+                        className="cursor-pointer text-xl py-1 px-2"
+                        onClick={onRemove}
+                    >-</a>
+                    <span className="text-xl">{ amount }</span>
+                    <a
+                        className="cursor-pointer text-xl py-1 px-2"
+                        onClick={onAdd}
+                    >+</a>
                 </div>
             </div>
             <div className="flex justify-center items-center">
-                <p>{price}</p>
+                <p>{price * amount}€</p>
             </div>
         </div>
     )
