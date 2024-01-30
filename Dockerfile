@@ -16,4 +16,6 @@ COPY . .
 
 RUN bundle install
 
-CMD ["rspec"]
+RUN cd frontend/server-api && npm install && cd ../allfunds && npm install && cd ../../
+
+WORKDIR /var/app
