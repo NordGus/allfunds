@@ -6,5 +6,26 @@ services:
     container_name: allfunds
     image: allfunds
     command: tail -f /dev/null
+    network_mode: "host"
+    volumes:
+      - .:/var/app
+
+  server:
+    build: .
+    container_name: allfunds
+    image: allfunds
+    command: cd frontend/server-api && npm run start
+      - "3000:3000"
+    network_mode: "host"
+    volumes:
+      - .:/var/app
+
+  vite:
+    build: .
+    container_name: allfunds
+    image: allfunds
+    command: cd frontend/allfunds && npm run vite
+      - "5173:5173"
+    network_mode: "host"
     volumes:
       - .:/var/app
